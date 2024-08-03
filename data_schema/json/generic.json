@@ -1,0 +1,178 @@
+[
+    {
+        "category": "identity",
+        "description": "Information uniquely describing and identifying a session or record.",
+        "metrics": [
+            {
+                "name": "identifier",
+                "fields": [
+                    {
+                        "name": "session_id",
+                        "type": "string",
+                        "description": "An ID unique to the exporting process representing the application session.",
+                        "example_values": ["82f447a1-f754-4e06-96f7-30f5afcf0e07"]
+                    }
+                ]
+            },
+            {
+                "name": "record",
+                "fields": [
+                    {
+                        "name": "record_type",
+                        "type": "string",
+                        "description": "Specify what causes the record to be sent.",
+                        "example_values": ["INIT", "PERIOD", "EVENT", "END"]
+                    }
+                ]
+            },
+            {
+                "name": "timestamp",
+                "fields": [
+                    {
+                        "name": "start_time_ms",
+                        "type": "uint64",
+                        "description": "UNIX millisecond timestamp of the starting timestamp that the record is valid for (e.g., for INIT this is the session start time, for PERIOD this is the startng time of the period this record covers).",
+                        "example_values": [1714015898291]
+                    },
+                    {
+                        "name": "end_time_ms",
+                        "type": "uint64",
+                        "description": "UNIX millisecond timestamp of the ending timestamp that the record is valid for (e.g., for INIT this is the session end time, for PERIOD this is the ending time of the period this record covers).",
+                        "example_values": [1714015919296]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "category": "endpoint",
+        "description": "Information related to endpoints (host/server) involved in an application session.",
+        "metrics": [
+            {
+                "name": "client_identity",
+                "fields": [
+                    {
+                        "name": "client_ipv4_address",
+                        "type": "string",
+                        "logical_type": "ipv4_address",
+                        "description": "IPv4 address of the client from whom the application session is initiatied. Subnet mask can be optionally included.",
+                        "example_values": ["149.171.37.7", "149.171.37.7/16"]
+                    },
+                    {
+                        "name": "client_ipv6_address",
+                        "type": "string",
+                        "logical_type": "ipv6_address",
+                        "description": "IPv6 address of the client from whom the application session is initiatied. Subnet mask can be optionally included.",
+                        "example_values": ["fe80::23aa:8346:e299:6716", "2001:db8:abcd:1234:4000::/66"]
+                    }
+                ]
+            },
+            {
+                "name": "server_identity",
+                "fields": [
+                    {
+                        "name": "server_ipv4_addresses",
+                        "type": "list",
+                        "subtype": {
+                            "type": "string",
+                            "logical_type": "ipv4_address"
+                        },
+                        "description": "List of IPv4 addresses client comunicates with during an application sessoin, ordered by time of connection establishment.",
+                        "example_values": ["203.13.161.76"]
+                    },
+                    {
+                        "name": "server_ipv6_addresses",
+                        "type": "list",
+                        "subtype": {
+                            "type": "string",
+                            "logical_type": "ipv6_address"
+                        },
+                        "description": "List of IPv6 addresses of servers that the client comunicates with during an application sessoin, ordered by time of connection establishment.",
+                        "example_values": ["2607:f8b0:4005:80b::200e"]
+                    },
+                    {
+                        "name": "server_port_numbers",
+                        "type": "list",
+                        "subtype": {
+                            "type": "uint16"
+                        },
+                        "description": "List of server port numbers corresponding to each of the server IP addresses.",
+                        "example_values": [443, 80]
+                    },
+                    {
+                        "name": "server_names",
+                        "type": "list",
+                        "subtype": {
+                            "type": "string"
+                        },
+                        "description": "List of server names (e.g., TLS SNI or DNS query names) corresponding to each of the server IP addresses.",
+                        "example_values": ["rr4---sn-npoe7nsr.googlevideo.com", "youtube.com"]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "category": "context",
+        "description": "Relevant information about HOW the application session is conducted.",
+        "metrics": [
+            {
+                "name": "application",
+                "fields": [
+                    {
+                        "name": "application_name",
+                        "type": "string",
+                        "description": "Name/provider of the application.",
+                        "example_values": ["YouTube", "Twitch", "EA FC 24"]
+                    },
+                    {
+                        "name": "application_category",
+                        "type": "string",
+                        "description": "Categoty of application.",
+                        "example_values": ["video streaming", "online gaming"]
+                    },
+                    {
+                        "name": "application_subcategory",
+                        "type": "string",
+                        "description": "Detailed type within a category of similar applications.",
+                        "example_values": ["sports", "FPS", "MMORPG"]
+                    }
+                ]
+            },
+            {
+                "name": "user_platform",
+                "fields": [
+                    {
+                        "name": "device_type",
+                        "type": "string",
+                        "description": "Type of device (e.g., OS) used to conduct the application session.",
+                        "example_values": ["iOS", "Windows", "Android TV"]
+                    },
+                    {
+                        "name": "software_agent_type",
+                        "type": "string",
+                        "description": "Type of software platform/terminal/agent used to conduct the application sesson.",
+                        "example_values": ["browser", "native app", "third-party app"]
+                    },
+                    {
+                        "name": "software_agent_name",
+                        "type": "string",
+                        "description": "Name of the software platform/terminal/agent used to conduct the application sesson.",
+                        "example_values": ["Chrome", "Firefox", "YouTube", "Vanced"]
+                    }
+                ]
+            },
+            {
+                "name": "network",
+                "fields": [
+                    {
+                        "name": "network_access_type",
+                        "type": "string",
+                        "description": "Connection type of the user.",
+                        "example_values": ["Wi-Fi", "Ethernet"]
+                    }
+                ]
+            }
+        ]
+    }
+]

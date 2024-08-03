@@ -1,0 +1,1729 @@
+[
+    {
+        "app_type": "video_streaming",
+        "qoe_metrics": [
+            {
+                "category": "video_quality",
+                "metrics": [
+                    {
+                        "name": "resolution",
+                        "indicators": [
+                            {
+                                "name": "resolution_dominant",
+                                "type": "string",
+                                "description": "Resolution spanning the longest duration in a measurement period.",
+                                "example_values": ["SD", "HD", "FHD", "QHD", "UHD", "360p", "480p", "720p", "1080p", "1440p", "2160p"]
+                            },
+                            {
+                                "name": "resolution_min",
+                                "type": "string",
+                                "description": "The lowest resolution played during the period covered by this record.",
+                                "example_values": ["SD", "HD", "FHD", "QHD", "UHD", "360p", "480p", "720p", "1080p", "1440p", "2160p"]
+                            },
+                            {
+                                "name": "resolution_state_uhd_sec",
+                                "type": "float32",
+                                "description": "Time spent playing at UHD (~2160p) resolution during the record period, measured in seconds.",
+                                "example_values": [0, 5.5]
+                            },
+                            {
+                                "name": "resolution_state_qhd_sec",
+                                "type": "float32",
+                                "description": "Time spent playing at QHD (~1440p) resolution during the record period, measured in seconds.",
+                                "example_values": [0, 5.5]
+                            },
+                            {
+                                "name": "resolution_state_fhd_sec",
+                                "type": "float32",
+                                "description": "Time spent playing at FHD (~1080p) resolution during the record period, measured in seconds.",
+                                "example_values": [0, 5.5]
+                            },
+                            {
+                                "name": "resolution_state_hd_sec",
+                                "type": "float32",
+                                "description": "Time spent playing at HD (~720p) resolution during the record period, measured in seconds.",
+                                "example_values": [0, 5.5]
+                            },
+                            {
+                                "name": "resolution_state_sd_sec",
+                                "type": "float32",
+                                "description": "Time spent playing at SD (~480p) resolution during the record period, measured in seconds.",
+                                "example_values": [0, 5.5]
+                            },
+                            {
+                                "name": "resolution_state_ld_sec",
+                                "type": "float32",
+                                "description": "Time spent playing at LD (~360p or lower) resolution during the record period, measured in seconds.",
+                                "example_values": [0, 5.5]
+                            },
+                            {
+                                "name": "resolution_prev",
+                                "type": "string",
+                                "description": "Video resolution the session is previously playing (before an EVENT record)."
+                            },
+                            {
+                                "name": "resolution_curr",
+                                "type": "string",
+                                "description": "Video resolution the session is currently playing (at/after an EVENT record)."
+                            }
+                        ]
+                    },
+                    {
+                        "name": "frame_rate",
+                        "indicators": [
+                            {
+                                "name": "frame_rate_avg_fps",
+                                "type": "unsigned16",
+                                "description": "Average video frame rate over the record period in frames per second.",
+                                "example_values": [30, 50, 60]
+                            },
+                            {
+                                "name": "frame_rate_min_fps",
+                                "type": "unsigned16",
+                                "description": "Minimum video frame rate over the record period in frames per second.",
+                                "example_values": [30, 50, 60]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "category": "audio_quality",
+                "metrics":[
+                    {
+                        "name": "audio_bitrate",
+                        "indicators": [
+                            {
+                                "name": "audio_bitrate_avg_Kbps",
+                                "type": "float32",
+                                "description": "Average audio bitrate over the record period in Kbps.",
+                                "example_values": ["48", "128", "256"]
+                            },
+                            {
+                                "name": "audio_bitrate_min_Kbps",
+                                "type": "float32",
+                                "description": "Minimum audio bitrate over the record period in Kbps.",
+                                "example_values": ["48", "128", "256"]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "category": "responsiveness",
+                "metrics": [
+                    {
+                        "name": "startup_delay",
+                        "indicators": [
+                            {
+                                "name": "startup_delay_avg_sec",
+                                "type": "float32",
+                                "description": "Average time needed to load a new video or change video stream (skip/change resolution)."
+                            },
+                            {
+                                "name": "startup_delay_max_sec",
+                                "type": "float32",
+                                "description": "Maximum time needed to load a new video or change video stream (skip/change resolution)."
+                            },
+                            {
+                                "name": "startup_delay_sum_sec",
+                                "type": "float32",
+                                "description": "Total time spent in loading a new video or change video stream (skip/change resolution)."
+                            }
+                        ]
+                    },
+                    {
+                        "name": "time_to_first_byte",
+                        "indicators": [
+                            {
+                                "name": "ttfb_avg_sec",
+                                "type": "float32",
+                                "description": "Average time needed between client sending a request and receiving the first byte of response from the server."
+                            },
+                            {
+                                "name": "ttfb_min_sec",
+                                "type": "float32",
+                                "description": "Minimum time needed between client sending a request and receiving the first byte of response from the server."
+                            },
+                            {
+                                "name": "ttfb_max_sec",
+                                "type": "float32",
+                                "description": "Maximum time needed between client sending a request and receiving the first byte of response from the server."
+                            },
+                            {
+                                "name": "ttfb_state_good_sec",
+                                "type": "float32",
+                                "description": "Time spent during the record period when the ttfb is good (determined by implementation)."
+                            },
+                            {
+                                "name": "ttfb_state_fair_sec",
+                                "type": "float32",
+                                "description": "Time spent during the record period when the ttfb is mediocre (determined by implementation)."
+                            },
+                            {
+                                "name": "ttfb_state_poor_sec",
+                                "type": "float32",
+                                "description": "Time spent during the record period when the ttfb is poor (determined by implementation)."
+                            }
+                        ]
+                    },
+                    {
+                        "name": "chunk_transfer_time",
+                        "indicators": [
+                            {
+                                "name": "ctt_avg_sec",
+                                "type": "float32",
+                                "description": "Average time needed between receiving the first and last byte of a chunk from the server."
+                            },
+                            {
+                                "name": "ctt_min_sec",
+                                "type": "float32",
+                                "description": "Minimum time needed between receiving the first and last byte of a chunk from the server."
+                            },
+                            {
+                                "name": "ctt_max_sec",
+                                "type": "float32",
+                                "description": "Maximum time needed between receiving the first and last byte of a chunk from the server."
+                            },
+                            {
+                                "name": "ctt_state_good_sec",
+                                "type": "float32",
+                                "description": "Time spent during the record period when the ctt is good (determined by implementation)."
+                            },
+                            {
+                                "name": "ctt_state_fair_sec",
+                                "type": "float32",
+                                "description": "Time spent during the record period when the ctt is mediocre (determined by implementation)."
+                            },
+                            {
+                                "name": "ctt_state_poor_sec",
+                                "type": "float32",
+                                "description": "Time spent during the record period when the ctt is poor (determined by implementation)."
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "category": "smoothness",
+                "metrics": [
+                    {
+                        "name": "buffer_state",
+                        "indicators": [
+                            {
+                                "name": "buffer_state_steady_sec",
+                                "type": "float32",
+                                "description": "Total time during the record period in which video buffer is in a stable state (not unidirectionally increasing/decreasing).",
+                                "example_values": [2, 3.5]
+                            },
+                            {
+                                "name": "buffer_state_buffering_sec",
+                                "type": "float32",
+                                "description": "Total time during the record period in which video buffer is (unidirectionally) filling up.",
+                                "example_values": [5, 2.4]
+                            },
+                            {
+                                "name": "buffer_state_draining_sec",
+                                "type": "float32",
+                                "description": "Total time during the record period in which video buffer is (unidirectionally) depleting.",
+                                "example_values": [53, 1.1]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "stall",
+                        "indicators": [
+                            {
+                                "name": "stall_duration_sum_sec",
+                                "type": "float32",
+                                "description": "Total time over the record period spent during which the video is stalling (due to empty buffer)."
+                            },
+                            {
+                                "name": "stall_duration_avg_sec",
+                                "type": "float32",
+                                "description": "Average duration of individual stalling events over the record period."
+                            },
+                            {
+                                "name": "stall_duration_max_sec",
+                                "type": "float32",
+                                "description": "Duration of the longest stalling event over the record period."
+                            },
+                            {
+                                "name": "stall_count_sum",
+                                "type": "unsigned32",
+                                "description": "Total number of stall events over the record period during which the video is stalling (due to empty buffer)."
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "category": "application_state",
+                "metrics": [
+                    {
+                        "name": "streaming_type",
+                        "indicators": [
+                            {
+                                "name": "streaming_type_dominant",
+                                "type": "string",
+                                "description": "Type of video streaming spanning the longest duration over the record period.",
+                                "example_values": ["VoD", "live"]
+                            },
+                            {
+                                "name": "streaming_type_vod_sec",
+                                "type": "float32",
+                                "description": "Time spent during the record period playing Video on Demand content."
+                            },
+                            {
+                                "name": "streaming_type_live_sec",
+                                "type": "float32",
+                                "description": "Time spent during the record period playing live streaming content."
+                            },
+                            {
+                                "name": "streaming_type_prev",
+                                "type": "string",
+                                "description": "Type of video stream the session is previously playing (before a EVENT record).",
+                                "example_values": ["VoD", "live"]
+                            },
+                            {
+                                "name": "streaming_type_curr",
+                                "type": "string",
+                                "description": "Type of video stream the session is currently playing (at/after a EVENT record).",
+                                "example_values": ["live", "VoD"]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "app_type": "online_gaming",
+        "qoe_metrics": [
+            {
+                "category": "audio_quality",
+                "metrics": [
+                    {
+                        "name": "audio_bitrate",
+                        "indicators": [
+                            {
+                                "name": "audio_bitrate_up_avg_Kbps",
+                                "type": "float32",
+                                "description": "Average audio bitrate sent from client to server (player chat) over the record period in Kbps.",
+                                "example_values": ["48", "128", "256"]
+                            },
+                            {
+                                "name": "audio_bitrate_up_min_Kbps",
+                                "type": "float32",
+                                "description": "Minimum audio bitrate sent from client to server (player chat) over the record period in Kbps.",
+                                "example_values": ["48", "128", "256"]
+                            },
+                            {
+                                "name": "audio_bitrate_down_avg_Kbps",
+                                "type": "float32",
+                                "description": "Average audio bitrate sent from server to client (teammate/opponent chat) over the record period in Kbps.",
+                                "example_values": ["48", "128", "256"]
+                            },
+                            {
+                                "name": "audio_bitrate_down_min_Kbps",
+                                "type": "float32",
+                                "description": "Minimum audio bitrate sent from server to client (teammate/opponent chat) over the record period in Kbps.",
+                                "example_values": ["48", "128", "256"]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "category": "responsiveness",
+                "metrics": [
+                    {
+                        "name": "update_frequency",
+                        "indicators": [
+                            {
+                                "name": "client_update_rate_avg_ups",
+                                "type": "float32",
+                                "description": "Average number of pushes per second sent from client to server to update actions from the user input."
+                            },
+                            {
+                                "name": "client_update_rate_min_ups",
+                                "type": "float32",
+                                "description": "Minimum number of pushes per second sent from client to server to update actions from the user input."
+                            },
+                            {
+                                "name": "server_tick_rate_avg_tps",
+                                "type": "float32",
+                                "description": "Average number of ticks (updates) per second sent from server to client to update game logic/status."
+                            },
+                            {
+                                "name": "server_tick_rate_min_tps",
+                                "type": "float32",
+                                "description": " Minimum number of ticks (updates) per second sent from server to client to update game logic/status."
+                            }
+                        ]
+                    },
+                    {
+                        "name": "server_ping",
+                        "indicators": [
+                            {
+                                "name": "server_ping_avg_ms",
+                                "type": "float32",
+                                "description": "Average ping delay to gaming servers over the record period."
+                            },
+                            {
+                                "name": "server_ping_max_ms",
+                                "type": "float32",
+                                "description": "Maximum ping delay to gaming servers over the record period."
+                            },
+                            {
+                                "name": "server_ping_min_ms",
+                                "type": "float32",
+                                "description": "Minimum ping delay to gaming servers over the record period."
+                            },
+                            {
+                                "name": "server_ping_state_good_sec",
+                                "type": "float32",
+                                "description": "Time spent over the record period during which the gaming session is having a good ping (determined by implementation)."
+                            },
+                            {
+                                "name": "server_ping_state_fair_sec",
+                                "type": "float32",
+                                "description": "Time spent over the record period during which the gaming session is having a mediocre ping (determined by implementation)."
+                            },
+                            {
+                                "name": "server_ping_state_poor_sec",
+                                "type": "float32",
+                                "description": "Time spent over the record period during which the gaming session is having a poor ping (determined by implementation)."
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "category": "smoothness",
+                "metrics": [
+                    {
+                        "name": "game_freeze",
+                        "description": "Occasions where a game graphics is unexpectedly stuck and does not change for a period of time regardless of the user actions.",
+                        "indicators": [
+                            {
+                                "name": "game_freeze_duration_sum_sec",
+                                "type": "float32",
+                                "description": "Total time over the record period during which the game graphics freeze."
+                            },
+                            {
+                                "name": "game_freeze_duration_avg_sec",
+                                "type": "float32",
+                                "description": "Average length of individual game freezes that happened over the record peroid."
+                            },
+                            {
+                                "name": "game_freeze_duration_max_sec",
+                                "type": "float32",
+                                "description": "Longest time across individual game freezes that happened over the record period."
+                            },
+                            {
+                                "name": "game_freeze_count_sum",
+                                "type": "unsigned32",
+                                "description": "Total number of individual game freezes that happened over the record period."
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "category": "application_state",
+                "metrics": [
+                    {
+                        "name": "game_stage",
+                        "indicators": [
+                            {
+                                "name": "game_stage_dominant",
+                                "type": "string",
+                                "description": "Game stage spanning the longest total duration over the record period.",
+                                "example_values": ["lobby", "loading", "gameplay"]
+                            },
+                            {
+                                "name": "game_stage_lobby_sec",
+                                "type": "float32",
+                                "description": "Time spent during the record period waiting in the lobby (e.g., menu, store, matchmaking)"
+                            },
+                            {
+                                "name": "game_stage_loading_sec",
+                                "type": "float32",
+                                "description": "Time spent during the record period loading a game match."
+                            },
+                            {
+                                "name": "game_stage_gameplay_sec",
+                                "type": "float32",
+                                "description": "Time spent during the record period playing in a match."
+                            },
+                            {
+                                "name": "game_stage_prev",
+                                "type": "float32",
+                                "description": "Game stage the session is previously in (before an EVENT record).",
+                                "example_values": ["lobby", "loading", "gameplay"]
+                            },
+                            {
+                                "name": "game_stage_curr",
+                                "type": "float32",
+                                "description": "Game stage the session is currently in (at/after an EVENT record).",
+                                "example_values": ["lobby", "loading", "gameplay"]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "app_type": "video_calling",
+        "qoe_metrics": [
+            {
+                "category": "video_quality",
+                "metrics": [
+                    {
+                        "name": "user_video_resolution",
+                        "indicators": [
+                            {
+                                "name": "user_video_resolution_dominant",
+                                "type": "string",
+                                "description": "Resolution of uploaded user video spanning the longest duration in a measurement period.",
+                                "example_values": ["SD", "HD", "FHD", "QHD", "UHD", "360p", "480p", "720p", "1080p", "1440p", "2160p"]
+                            },
+                            {
+                                "name": "user_video_resolution_min",
+                                "type": "string",
+                                "description": "The lowest resolution of uploaded user video during the period covered by this record.",
+                                "example_values": ["SD", "HD", "FHD", "QHD", "UHD", "360p", "480p", "720p", "1080p", "1440p", "2160p"]
+                            },
+                            {
+                                "name": "user_video_resolution_state_uhd_sec",
+                                "type": "float32",
+                                "description": "Time spent uploading user video at UHD (~2160p) resolution during the record period, measured in seconds.",
+                                "example_values": [0, 5.5]
+                            },
+                            {
+                                "name": "user_video_resolution_state_qhd_sec",
+                                "type": "float32",
+                                "description": "Time spent uploading user video at QHD (~1440p) resolution during the record period, measured in seconds.",
+                                "example_values": [0, 5.5]
+                            },
+                            {
+                                "name": "user_video_resolution_state_fhd_sec",
+                                "type": "float32",
+                                "description": "Time spent uploading user video at FHD (~1080p) resolution during the record period, measured in seconds.",
+                                "example_values": [0, 5.5]
+                            },
+                            {
+                                "name": "user_video_resolution_state_hd_sec",
+                                "type": "float32",
+                                "description": "Time spent uploading user video at HD (~720p) resolution during the record period, measured in seconds.",
+                                "example_values": [0, 5.5]
+                            },
+                            {
+                                "name": "user_video_resolution_state_sd_sec",
+                                "type": "float32",
+                                "description": "Time spent uploading user video at SD (~480p) resolution during the record period, measured in seconds.",
+                                "example_values": [0, 5.5]
+                            },
+                            {
+                                "name": "user_video_resolution_state_ld_sec",
+                                "type": "float32",
+                                "description": "Time spent uploading user video at LD (~360p or lower) resolution during the record period, measured in seconds.",
+                                "example_values": [0, 5.5]
+                            },
+                            {
+                                "name": "user_video_resolution_prev",
+                                "type": "string",
+                                "description": "User video resolution that the session is previously uploading (before an EVENT record)."
+                            },
+                            {
+                                "name": "user_video_resolution_curr",
+                                "type": "string",
+                                "description": "User video resolution that the session is currently uploading (at/after an EVENT record)."
+                            }
+                        ]
+                    },
+                    {
+                        "name": "user_video_frame_rate",
+                        "indicators": [
+                            {
+                                "name": "frame_rate_avg_fps",
+                                "type": "unsigned16",
+                                "description": "Average frame rate of uploaded user video over the record period in frames per second.",
+                                "example_values": [30, 50, 60]
+                            },
+                            {
+                                "name": "frame_rate_min_fps",
+                                "type": "unsigned16",
+                                "description": "Minimum frame rate of uploaded user video over the record period in frames per second.",
+                                "example_values": [30, 50, 60]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "participant_video_resolution",
+                        "indicators": [
+                            {
+                                "name": "participant_video_resolution_dominant",
+                                "type": "string",
+                                "description": "Resolution of played participant video spanning the longest duration in a measurement period.",
+                                "example_values": ["SD", "HD", "FHD", "QHD", "UHD", "360p", "480p", "720p", "1080p", "1440p", "2160p"]
+                            },
+                            {
+                                "name": "participant_video_resolution_min",
+                                "type": "string",
+                                "description": "The lowest resolution of played participant video during the period covered by this record.",
+                                "example_values": ["SD", "HD", "FHD", "QHD", "UHD", "360p", "480p", "720p", "1080p", "1440p", "2160p"]
+                            },
+                            {
+                                "name": "participant_video_resolution_state_uhd_sec",
+                                "type": "float32",
+                                "description": "Time spent playing participant video at UHD (~2160p) resolution during the record period, measured in seconds.",
+                                "example_values": [0, 5.5]
+                            },
+                            {
+                                "name": "participant_video_resolution_state_qhd_sec",
+                                "type": "float32",
+                                "description": "Time spent playing participant video at QHD (~1440p) resolution during the record period, measured in seconds.",
+                                "example_values": [0, 5.5]
+                            },
+                            {
+                                "name": "participant_video_resolution_state_fhd_sec",
+                                "type": "float32",
+                                "description": "Time spent playing participant video at FHD (~1080p) resolution during the record period, measured in seconds.",
+                                "example_values": [0, 5.5]
+                            },
+                            {
+                                "name": "participant_video_resolution_state_hd_sec",
+                                "type": "float32",
+                                "description": "Time spent playing participant video at HD (~720p) resolution during the record period, measured in seconds.",
+                                "example_values": [0, 5.5]
+                            },
+                            {
+                                "name": "participant_video_resolution_state_sd_sec",
+                                "type": "float32",
+                                "description": "Time spent playing participant video at SD (~480p) resolution during the record period, measured in seconds.",
+                                "example_values": [0, 5.5]
+                            },
+                            {
+                                "name": "participant_video_resolution_state_ld_sec",
+                                "type": "float32",
+                                "description": "Time spent playing participant video at LD (~360p or lower) resolution during the record period, measured in seconds.",
+                                "example_values": [0, 5.5]
+                            },
+                            {
+                                "name": "participant_video_resolution_prev",
+                                "type": "string",
+                                "description": "participant video resolution that the session is previously playing (before an EVENT record)."
+                            },
+                            {
+                                "name": "participant_video_resolution_curr",
+                                "type": "string",
+                                "description": "participant video resolution that the session is currently playing (at/after an EVENT record)."
+                            }
+                        ]
+                    },
+                    {
+                        "name": "participant_video_frame_rate",
+                        "indicators": [
+                            {
+                                "name": "frame_rate_avg_fps",
+                                "type": "unsigned16",
+                                "description": "Average frame rate of played participant video over the record period in frames per second.",
+                                "example_values": [30, 50, 60]
+                            },
+                            {
+                                "name": "frame_rate_min_fps",
+                                "type": "unsigned16",
+                                "description": "Minimum frame rate of played participant video over the record period in frames per second.",
+                                "example_values": [30, 50, 60]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "screen_share_resolution",
+                        "indicators": [
+                            {
+                                "name": "screen_share_resolution_dominant",
+                                "type": "string",
+                                "description": "Resolution of uploaded screen share spanning the longest duration in a measurement period.",
+                                "example_values": ["SD", "HD", "FHD", "QHD", "UHD", "360p", "480p", "720p", "1080p", "1440p", "2160p"]
+                            },
+                            {
+                                "name": "screen_share_resolution_min",
+                                "type": "string",
+                                "description": "The lowest resolution of uploaded screen share during the period covered by this record.",
+                                "example_values": ["SD", "HD", "FHD", "QHD", "UHD", "360p", "480p", "720p", "1080p", "1440p", "2160p"]
+                            },
+                            {
+                                "name": "screen_share_resolution_state_uhd_sec",
+                                "type": "float32",
+                                "description": "Time spent uploading screen share at UHD (~2160p) resolution during the record period, measured in seconds.",
+                                "example_values": [0, 5.5]
+                            },
+                            {
+                                "name": "screen_share_resolution_state_qhd_sec",
+                                "type": "float32",
+                                "description": "Time spent uploading screen share at QHD (~1440p) resolution during the record period, measured in seconds.",
+                                "example_values": [0, 5.5]
+                            },
+                            {
+                                "name": "screen_share_resolution_state_fhd_sec",
+                                "type": "float32",
+                                "description": "Time spent uploading screen share at FHD (~1080p) resolution during the record period, measured in seconds.",
+                                "example_values": [0, 5.5]
+                            },
+                            {
+                                "name": "screen_share_resolution_state_hd_sec",
+                                "type": "float32",
+                                "description": "Time spent uploading screen share at HD (~720p) resolution during the record period, measured in seconds.",
+                                "example_values": [0, 5.5]
+                            },
+                            {
+                                "name": "screen_share_resolution_state_sd_sec",
+                                "type": "float32",
+                                "description": "Time spent uploading screen share at SD (~480p) resolution during the record period, measured in seconds.",
+                                "example_values": [0, 5.5]
+                            },
+                            {
+                                "name": "screen_share_resolution_state_ld_sec",
+                                "type": "float32",
+                                "description": "Time spent uploading screen share at LD (~360p or lower) resolution during the record period, measured in seconds.",
+                                "example_values": [0, 5.5]
+                            },
+                            {
+                                "name": "screen_share_resolution_prev",
+                                "type": "string",
+                                "description": "Screen share resolution that the session is previously uploading (before an EVENT record)."
+                            },
+                            {
+                                "name": "screen_share_resolution_curr",
+                                "type": "string",
+                                "description": "Screen share resolution that the session is currently uploading (at/after an EVENT record)."
+                            }
+                        ]
+                    },
+                    {
+                        "name": "screen_share_frame_rate",
+                        "indicators": [
+                            {
+                                "name": "frame_rate_avg_fps",
+                                "type": "unsigned16",
+                                "description": "Average frame rate of uploaded screen share over the record period in frames per second.",
+                                "example_values": [30, 50, 60]
+                            },
+                            {
+                                "name": "frame_rate_min_fps",
+                                "type": "unsigned16",
+                                "description": "Minimum frame rate of uploaded screen share over the record period in frames per second.",
+                                "example_values": [30, 50, 60]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "category": "audio_quality",
+                "metrics": [
+                    {
+                        "name": "user_audio_bitrate",
+                        "indicators": [
+                            {
+                                "name": "user_audio_bitrate_avg_Kbps",
+                                "type": "float32",
+                                "description": "Average user audio bitrate uploaded over the record period in Kbps.",
+                                "example_values": ["48", "128", "256"]
+                            },
+                            {
+                                "name": "user_audio_bitrate_min_Kbps",
+                                "type": "float32",
+                                "description": "Minimum user audio bitrate uploaded over the record period in Kbps.",
+                                "example_values": ["48", "128", "256"]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "participant_audio_bitrate",
+                        "indicators": [
+                            {
+                                "name": "participant_audio_bitrate_avg_Kbps",
+                                "type": "float32",
+                                "description": "Average participant audio bitrate played over the record period in Kbps.",
+                                "example_values": ["48", "128", "256"]
+                            },
+                            {
+                                "name": "participant_audio_bitrate_min_Kbps",
+                                "type": "float32",
+                                "description": "Minimum participant audio bitrate played over the record period in Kbps.",
+                                "example_values": ["48", "128", "256"]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "category": "responsiveness",
+                "metrics": [
+                    {
+                        "name": "user_video_lag",
+                        "indicators": [
+                            {
+                                "name": "user_video_lag_avg_ms",
+                                "type": "float32",
+                                "description": "Average latency of uploading user video over the record period measured in milliseconds",
+                                "example_values": [10, 22.5]
+                            },
+                            {
+                                "name": "user_video_lag_max_ms",
+                                "type": "float32",
+                                "description": "Maximum latency of uploading user video over the record period measured in milliseconds",
+                                "example_values": [18.2, 40]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "user_audio_lag",
+                        "indicators": [
+                            {
+                                "name": "user_audio_lag_avg_ms",
+                                "type": "float32",
+                                "description": "Average latency of uploading user audio over the record period measured in milliseconds",
+                                "example_values": [10, 22.5]
+                            },
+                            {
+                                "name": "user_audio_lag_max_ms",
+                                "type": "float32",
+                                "description": "Maximum latency of uploading user audio over the record period measured in milliseconds",
+                                "example_values": [18.2, 40]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "participant_video_lag",
+                        "indicators": [
+                            {
+                                "name": "participant_video_lag_avg_ms",
+                                "type": "float32",
+                                "description": "Average latency of receiving participant video over the record period measured in milliseconds",
+                                "example_values": [21.7, 33]
+                            },
+                            {
+                                "name": "participant_video_lag_max_ms",
+                                "type": "float32",
+                                "description": "Maximum latency of receiving participant video over the record period measured in milliseconds",
+                                "example_values": [27.0, 50]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "participant_audio_lag",
+                        "indicators": [
+                            {
+                                "name": "participant_audio_lag_avg_ms",
+                                "type": "float32",
+                                "description": "Average latency of receiving participant audio over the record period measured in milliseconds",
+                                "example_values": [21.7, 33]
+                            },
+                            {
+                                "name": "participant_audio_lag_max_ms",
+                                "type": "float32",
+                                "description": "Maximum latency of receiving participant video over the record period measured in milliseconds",
+                                "example_values": [27.0, 50]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "screen_share_lag",
+                        "indicators": [
+                            {
+                                "name": "screen_share_lag_avg_ms",
+                                "type": "float32",
+                                "description": "Average latency of uploading screen share over the record period measured in milliseconds",
+                                "example_values": [39, 101.5]
+                            },
+                            {
+                                "name": "screen_share_lag_max_ms",
+                                "type": "float32",
+                                "description": "Maximum latency of uploading screen share over the record period measured in milliseconds",
+                                "example_values": [52.4, 120]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "category": "smoothness",
+                "metrics": [
+                    {
+                        "name": "frame_drop",
+                        "indicators": [
+                            {
+                                "name": "user_video_frame_drop_count_sum",
+                                "type": "unsigned32",
+                                "description": "Totla number of user video frames dropped within the record period",
+                                "example_values": [0, 2, 301]
+                            },
+                            {
+                                "name": "participant_video_frame_drop_count_sum",
+                                "type": "unsigned32",
+                                "description": "Total number of participant video frames dropped within the record period",
+                                "example_values": [0, 2, 301]
+                            },
+                            {
+                                "name": "screen_share_frame_drop_count_sum",
+                                "type": "unsigned32",
+                                "description": "Total number of screen share frames dropped within the record period",
+                                "example_values": [0, 2, 301]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "audio_dropout",
+                        "indicators": [
+                            {
+                                "name": "user_audio_dropout_count_sum",
+                                "type": "unsigned32",
+                                "description": "Total number of times where the user audio is dropped out (unexpectedly muted)",
+                                "example_values": [0, 2]
+                            },
+                            {
+                                "name": "user_audio_dropout_duration_sum_sec",
+                                "type": "float32",
+                                "description": "Total number of seconds where the user audio is dropped out (unexpectedly muted)",
+                                "example_values": [0, 5.0]
+                            },
+                            {
+                                "name": "user_audio_dropout_duration_avg_sec",
+                                "type": "float32",
+                                "description": "Average number of seconds of user audio dropout events",
+                                "example_values": [0, 2.5]
+                            },
+                            {
+                                "name": "participant_audio_dropout_count",
+                                "type": "unsigned32",
+                                "description": "Total number of times where the participant audio is dropped out (unexpectedly muted)",
+                                "example_values": [0, 5]
+                            },
+                            {
+                                "name": "participant_audio_dropout_duration_sum_sec",
+                                "type": "float32",
+                                "description": "Total number of seconds where the participant audio is dropped out (unexpectedly muted)",
+                                "example_values": [0, 17.5]
+                            },
+                            {
+                                "name": "participant_audio_dropout_duration_avg_sec",
+                                "type": "float32",
+                                "description": "Average number of seconds of participant audio dropout events",
+                                "example_values": [0, 3.5]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "category": "application_state",
+                "metrics": [
+                    {
+                        "name": "call_status",
+                        "indicators": [
+                            {
+                                "name": "user_video_status_curr",
+                                "type": "boolean",
+                                "description": "Current status (on/off) of the user video",
+                                "example_values": [true, false]
+                            },
+                            {
+                                "name": "user_video_status_prev",
+                                "type": "boolean",
+                                "description": "Previous status (on/off) of the user video",
+                                "example_values": [true, false]
+                            },
+                            {
+                                "name": "user_audio_status_curr",
+                                "type": "boolean",
+                                "description": "Current status (on/off) of the user audio",
+                                "example_values": [true, false]
+                            },
+                            {
+                                "name": "user_audio_status_prev",
+                                "type": "boolean",
+                                "description": "Current status (on/off) of the user audio",
+                                "example_values": [true, false]
+                            },
+                            {
+                                "name": "screen_share_status_curr",
+                                "type": "boolean",
+                                "description": "Current status (on/off) of the screen share",
+                                "example_values": [true, false]
+                            },
+                            {
+                                "name": "screen_share_status_prev",
+                                "type": "boolean",
+                                "description": "Current status (on/off) of the screen share",
+                                "example_values": [true, false]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "app_type": "music_streaming",
+        "qoe_metrics": [
+            {
+                "category": "audio_quality",
+                "metrics": [
+                    {
+                        "name": "audio_bitrate",
+                        "indicators": [
+                            {
+                                "name": "audio_bitrate_avg_Kbps",
+                                "type": "float32",
+                                "description": "Average audio bitrate over the record period in Kbps.",
+                                "example_values": ["48", "128", "256"]
+                            },
+                            {
+                                "name": "audio_bitrate_min_Kbps",
+                                "type": "float32",
+                                "description": "Minimum audio bitrate over the record period in Kbps.",
+                                "example_values": ["48", "128", "256"]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "category": "responsiveness",
+                "metrics": [
+                    {
+                        "name": "initial_delay",
+                        "indicators": [
+                            {
+                                "name": "initial_delay_avg_sec",
+                                "type": "float32",
+                                "description": "Average time needed to load a new music track (skip/change audio quality)."
+                            },
+                            {
+                                "name": "initial_delay_max_sec",
+                                "type": "float32",
+                                "description": "Maximum time needed to load a new music track (skip/change audio quality)."
+                            },
+                            {
+                                "name": "initial_delay_sum_sec",
+                                "type": "float32",
+                                "description": "Total time spent in loading a new music track (skip/change audio quality)."
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "category": "smoothness",
+                "metrics": [
+                    {
+                        "name": "stall",
+                        "indicators": [
+                            {
+                                "name": "stall_duration_sum_sec",
+                                "type": "float32",
+                                "description": "Total time over the record period spent during which the music track is stalling."
+                            },
+                            {
+                                "name": "stall_duration_avg_sec",
+                                "type": "float32",
+                                "description": "Average duration of individual stalling events over the record period."
+                            },
+                            {
+                                "name": "stall_duration_max_sec",
+                                "type": "float32",
+                                "description": "Duration of the longest stalling event over the record period."
+                            },
+                            {
+                                "name": "stall_count_sum",
+                                "type": "unsigned32",
+                                "description": "Total number of stall events over the record period during which the music track is stalling."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "app_type": "cloud_gaming",
+        "qoe_metrics": [
+            {
+                "category": "video_quality",
+                "metrics": [
+                    {
+                        "name": "resolution",
+                        "indicators": [
+                            {
+                                "name": "resolution_dominant",
+                                "type": "string",
+                                "description": "Resolution spanning the longest duration in a measurement period.",
+                                "example_values": ["SD", "HD", "FHD", "QHD", "UHD", "360p", "480p", "720p", "1080p", "1440p", "2160p"]
+                            },
+                            {
+                                "name": "resolution_min",
+                                "type": "string",
+                                "description": "The lowest resolution played during the period covered by this record.",
+                                "example_values": ["SD", "HD", "FHD", "QHD", "UHD", "360p", "480p", "720p", "1080p", "1440p", "2160p"]
+                            },
+                            {
+                                "name": "resolution_state_uhd_sec",
+                                "type": "float32",
+                                "description": "Time spent playing at UHD (~2160p) resolution during the record period, measured in seconds.",
+                                "example_values": [0, 5.5]
+                            },
+                            {
+                                "name": "resolution_state_qhd_sec",
+                                "type": "float32",
+                                "description": "Time spent playing at QHD (~1440p) resolution during the record period, measured in seconds.",
+                                "example_values": [0, 5.5]
+                            },
+                            {
+                                "name": "resolution_state_fhd_sec",
+                                "type": "float32",
+                                "description": "Time spent playing at FHD (~1080p) resolution during the record period, measured in seconds.",
+                                "example_values": [0, 5.5]
+                            },
+                            {
+                                "name": "resolution_state_hd_sec",
+                                "type": "float32",
+                                "description": "Time spent playing at HD (~720p) resolution during the record period, measured in seconds.",
+                                "example_values": [0, 5.5]
+                            },
+                            {
+                                "name": "resolution_state_sd_sec",
+                                "type": "float32",
+                                "description": "Time spent playing at SD (~480p) resolution during the record period, measured in seconds.",
+                                "example_values": [0, 5.5]
+                            },
+                            {
+                                "name": "resolution_state_ld_sec",
+                                "type": "float32",
+                                "description": "Time spent playing at LD (~360p or lower) resolution during the record period, measured in seconds.",
+                                "example_values": [0, 5.5]
+                            },
+                            {
+                                "name": "resolution_prev",
+                                "type": "string",
+                                "description": "Video resolution the session is previously playing (before an EVENT record)."
+                            },
+                            {
+                                "name": "resolution_curr",
+                                "type": "string",
+                                "description": "Video resolution the session is currently playing (at/after an EVENT record)."
+                            }
+                        ]
+                    },
+                    {
+                        "name": "frame_rate",
+                        "indicators": [
+                            {
+                                "name": "frame_rate_avg_fps",
+                                "type": "unsigned16",
+                                "description": "Average video frame rate over the record period in frames per second.",
+                                "example_values": [30, 50, 60]
+                            },
+                            {
+                                "name": "frame_rate_min_fps",
+                                "type": "unsigned16",
+                                "description": "Minimum video frame rate over the record period in frames per second.",
+                                "example_values": [30, 50, 60]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "category": "audio_quality",
+                "metrics": [
+                    {
+                        "name": "audio_bitrate",
+                        "indicators": [
+                            {
+                                "name": "audio_bitrate_avg_Kbps",
+                                "type": "float32",
+                                "description": "Average audio bitrate over the record period in Kbps.",
+                                "example_values": ["48", "128", "256"]
+                            },
+                            {
+                                "name": "audio_bitrate_min_Kbps",
+                                "type": "float32",
+                                "description": "Minimum audio bitrate over the record period in Kbps.",
+                                "example_values": ["48", "128", "256"]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "category": "responsiveness",
+                "metrics": [
+                    {
+                        "name": "update_frequency",
+                        "indicators": [
+                            {
+                                "name": "client_update_rate_avg_ups",
+                                "type": "float32",
+                                "description": "Average number of pushes per second sent from client to server to update actions from the user input."
+                            },
+                            {
+                                "name": "client_update_rate_min_ups",
+                                "type": "float32",
+                                "description": "Minimum number of pushes per second sent from client to server to update actions from the user input."
+                            },
+                            {
+                                "name": "server_tick_rate_avg_tps",
+                                "type": "float32",
+                                "description": "Average number of ticks (updates) per second sent from server to client to update game logic/status."
+                            },
+                            {
+                                "name": "server_tick_rate_min_tps",
+                                "type": "float32",
+                                "description": " Minimum number of ticks (updates) per second sent from server to client to update game logic/status."
+                            }
+                        ]
+                    },
+                    {
+                        "name": "cloud_server_ping",
+                        "indicators": [
+                            {
+                                "name": "cloud_server_ping_avg_ms",
+                                "type": "float32",
+                                "description": "Average ping delay to gaming servers over the record period."
+                            },
+                            {
+                                "name": "cloud_server_ping_max_ms",
+                                "type": "float32",
+                                "description": "Maximum ping delay to gaming servers over the record period."
+                            },
+                            {
+                                "name": "cloud_server_ping_min_ms",
+                                "type": "float32",
+                                "description": "Minimum ping delay to gaming servers over the record period."
+                            },
+                            {
+                                "name": "cloud_server_ping_state_good_sec",
+                                "type": "float32",
+                                "description": "Time spent over the record period during which the gaming session is having a good ping (determined by implementation)."
+                            },
+                            {
+                                "name": "cloud_server_ping_state_fair_sec",
+                                "type": "float32",
+                                "description": "Time spent over the record period during which the gaming session is having a mediocre ping (determined by implementation)."
+                            },
+                            {
+                                "name": "cloud_server_ping_state_poor_sec",
+                                "type": "float32",
+                                "description": "Time spent over the record period during which the gaming session is having a poor ping (determined by implementation)."
+                            }
+                        ]
+                    },
+                    {
+                        "name": "game_server_ping",
+                        "indicators": [
+                            {
+                                "name": "game_server_ping_avg_ms",
+                                "type": "float32",
+                                "description": "Average ping delay to gaming servers over the record period."
+                            },
+                            {
+                                "name": "game_server_ping_max_ms",
+                                "type": "float32",
+                                "description": "Maximum ping delay to gaming servers over the record period."
+                            },
+                            {
+                                "name": "game_server_ping_min_ms",
+                                "type": "float32",
+                                "description": "Minimum ping delay to gaming servers over the record period."
+                            },
+                            {
+                                "name": "game_server_ping_state_good_sec",
+                                "type": "float32",
+                                "description": "Time spent over the record period during which the gaming session is having a good ping (determined by implementation)."
+                            },
+                            {
+                                "name": "game_server_ping_state_fair_sec",
+                                "type": "float32",
+                                "description": "Time spent over the record period during which the gaming session is having a mediocre ping (determined by implementation)."
+                            },
+                            {
+                                "name": "game_server_ping_state_poor_sec",
+                                "type": "float32",
+                                "description": "Time spent over the record period during which the gaming session is having a poor ping (determined by implementation)."
+                            }
+                        ]
+                    },
+                    {
+                        "name": "update_frequency",
+                        "indicators": [
+                            {
+                                "name": "client_update_rate_avg_ups",
+                                "type": "float32",
+                                "description": "Average number of pushes per second sent from client to server to update actions from the user input."
+                            },
+                            {
+                                "name": "client_update_rate_min_ups",
+                                "type": "float32",
+                                "description": "Minimum number of pushes per second sent from client to server to update actions from the user input."
+                            },
+                            {
+                                "name": "server_tick_rate_avg_tps",
+                                "type": "float32",
+                                "description": "Average number of ticks (updates) per second sent from server to client to update game logic/status."
+                            },
+                            {
+                                "name": "server_tick_rate_min_tps",
+                                "type": "float32",
+                                "description": " Minimum number of ticks (updates) per second sent from server to client to update game logic/status."
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "category": "smoothness",
+                "metrics": [
+                    {
+                        "name": "frame_jitter",
+                        "indicators": [
+                            
+                        ]
+                    },
+                    {
+                        "name": "game_freeze",
+                        "description": "Occasions where a game graphics is unexpectedly stuck and does not change for a period of time regardless of the user actions.",
+                        "indicators": [
+                            {
+                                "name": "game_freeze_duration_sum_sec",
+                                "type": "float32",
+                                "description": "Total time over the record period during which the game graphics freeze."
+                            },
+                            {
+                                "name": "game_freeze_duration_avg_sec",
+                                "type": "float32",
+                                "description": "Average length of individual game freezes that happened over the record peroid."
+                            },
+                            {
+                                "name": "game_freeze_duration_max_sec",
+                                "type": "float32",
+                                "description": "Longest time across individual game freezes that happened over the record period."
+                            },
+                            {
+                                "name": "game_freeze_count_sum",
+                                "type": "unsigned32",
+                                "description": "Total number of individual game freezes that happened over the record period."
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "category": "application_state",
+                "metrics": [
+                    {
+                        "name": "game_stage",
+                        "indicators": [
+                            {
+                                "name": "game_stage_dominant",
+                                "type": "string",
+                                "description": "Game stage spanning the longest total duration over the record period.",
+                                "example_values": ["lobby", "loading", "gameplay"]
+                            },
+                            {
+                                "name": "game_stage_lobby_sec",
+                                "type": "float32",
+                                "description": "Time spent during the record period waiting in the lobby (e.g., menu, store, matchmaking)"
+                            },
+                            {
+                                "name": "game_stage_loading_sec",
+                                "type": "float32",
+                                "description": "Time spent during the record period loading a game match."
+                            },
+                            {
+                                "name": "game_stage_gameplay_sec",
+                                "type": "float32",
+                                "description": "Time spent during the record period playing in a match."
+                            },
+                            {
+                                "name": "game_stage_prev",
+                                "type": "float32",
+                                "description": "Game stage the session is previously in (before an EVENT record).",
+                                "example_values": ["lobby", "loading", "gameplay"]
+                            },
+                            {
+                                "name": "game_stage_curr",
+                                "type": "float32",
+                                "description": "Game stage the session is currently in (at/after an EVENT record).",
+                                "example_values": ["lobby", "loading", "gameplay"]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "app_type": "AR_VR",
+        "qoe_metrics": [
+            {
+                "category": "video_quality",
+                "metrics": [
+                    {
+                        "name": "resolution",
+                        "indicators": [
+                            {
+                                "name": "resolution_dominant",
+                                "type": "string",
+                                "description": "Resolution spanning the longest duration in a measurement period.",
+                                "example_values": ["SD", "HD", "FHD", "QHD", "UHD", "360p", "480p", "720p", "1080p", "1440p", "2160p"]
+                            },
+                            {
+                                "name": "resolution_min",
+                                "type": "string",
+                                "description": "The lowest resolution played during the period covered by this record.",
+                                "example_values": ["SD", "HD", "FHD", "QHD", "UHD", "360p", "480p", "720p", "1080p", "1440p", "2160p"]
+                            },
+                            {
+                                "name": "resolution_state_uhd_sec",
+                                "type": "float32",
+                                "description": "Time spent playing at UHD (~2160p) resolution during the record period, measured in seconds.",
+                                "example_values": [0, 5.5]
+                            },
+                            {
+                                "name": "resolution_state_qhd_sec",
+                                "type": "float32",
+                                "description": "Time spent playing at QHD (~1440p) resolution during the record period, measured in seconds.",
+                                "example_values": [0, 5.5]
+                            },
+                            {
+                                "name": "resolution_state_fhd_sec",
+                                "type": "float32",
+                                "description": "Time spent playing at FHD (~1080p) resolution during the record period, measured in seconds.",
+                                "example_values": [0, 5.5]
+                            },
+                            {
+                                "name": "resolution_state_hd_sec",
+                                "type": "float32",
+                                "description": "Time spent playing at HD (~720p) resolution during the record period, measured in seconds.",
+                                "example_values": [0, 5.5]
+                            },
+                            {
+                                "name": "resolution_state_sd_sec",
+                                "type": "float32",
+                                "description": "Time spent playing at SD (~480p) resolution during the record period, measured in seconds.",
+                                "example_values": [0, 5.5]
+                            },
+                            {
+                                "name": "resolution_state_ld_sec",
+                                "type": "float32",
+                                "description": "Time spent playing at LD (~360p or lower) resolution during the record period, measured in seconds.",
+                                "example_values": [0, 5.5]
+                            },
+                            {
+                                "name": "resolution_prev",
+                                "type": "string",
+                                "description": "Video resolution the session is previously playing (before an EVENT record)."
+                            },
+                            {
+                                "name": "resolution_curr",
+                                "type": "string",
+                                "description": "Video resolution the session is currently playing (at/after an EVENT record)."
+                            }
+                        ]
+                    },
+                    {
+                        "name": "frame_rate",
+                        "indicators": [
+                            {
+                                "name": "frame_rate_avg_fps",
+                                "type": "unsigned16",
+                                "description": "Average video frame rate over the record period in frames per second.",
+                                "example_values": [30, 50, 60]
+                            },
+                            {
+                                "name": "frame_rate_min_fps",
+                                "type": "unsigned16",
+                                "description": "Minimum video frame rate over the record period in frames per second.",
+                                "example_values": [30, 50, 60]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "category": "audio_quality",
+                "metrics": [
+                    {
+                        "name": "audio_bitrate",
+                        "indicators": [
+                            {
+                                "name": "audio_bitrate_avg_Kbps",
+                                "type": "float32",
+                                "description": "Average audio bitrate over the record period in Kbps.",
+                                "example_values": ["48", "128", "256"]
+                            },
+                            {
+                                "name": "audio_bitrate_min_Kbps",
+                                "type": "float32",
+                                "description": "Minimum audio bitrate over the record period in Kbps.",
+                                "example_values": ["48", "128", "256"]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "category": "responsiveness",
+                "metrics": [
+                    {
+                        "name": "activity_lag",
+                        "indicators": [
+                            {
+                                "name": "activity_lag_avg_ms",
+                                "type": "float32",
+                                "description": "Average delay from user action to screen display."
+                            },
+                            {
+                                "name": "activity_lag_max_ms",
+                                "type": "float32",
+                                "description": "Maximum delay from user action to screen display."
+                            },
+                            {
+                                "name": "activity_lag_min_ms",
+                                "type": "float32",
+                                "description": "Minimum delay from user action to screen display."
+                            },
+                            {
+                                "name": "activity_lag_state_good_sec",
+                                "type": "float32",
+                                "description": "Time spent over the record period during which the delay from user action to screen display is good."
+                            },
+                            {
+                                "name": "activity_lag_state_fair_sec",
+                                "type": "float32",
+                                "description": "Time spent over the record period during which the delay from user action to screen display is fair."
+                            },
+                            {
+                                "name": "activity_lag_state_poor_sec",
+                                "type": "float32",
+                                "description": "Time spent over the record period during which the delay from user action to screen display is poor."
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "category": "smoothness",
+                "metrics": [
+                    {
+                        "name": "motion_freeze",
+                        "indicators": [
+                            {
+                                "name": "motion_freeze_duration_sum_sec",
+                                "type": "float32",
+                                "description": "Total time over the record period spent during which the user motion is frozen."
+                            },
+                            {
+                                "name": "motion_freeze_duration_avg_sec",
+                                "type": "float32",
+                                "description": "Average duration of individual motion freeze event over the record period."
+                            },
+                            {
+                                "name": "motion_freeze_duration_max_sec",
+                                "type": "float32",
+                                "description": "Duration of the longest motion freeze event over the record period."
+                            },
+                            {
+                                "name": "motion_freeze_count_sum",
+                                "type": "unsigned32",
+                                "description": "Total number of motion freeze events over the record period."
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "category": "application_state",
+                "metrics": [
+                    {
+                        "name": "user_activity",
+                        "indicators": [
+                            {
+                                "name": "user_activity_dominant",
+                                "type": "string",
+                                "description": "User activity state spanning the longest duration over the record period.",
+                                "example_values": ["main hub", "home space", "separate user-created event", "asset trading", "separate provider-created event", "content creation"]
+                            },
+                            {
+                                "name": "streaming_type_prev",
+                                "type": "string",
+                                "description": "Type of user activity state the session is previously in (before a EVENT record).",
+                                "example_values": ["VoD", "live"]
+                            },
+                            {
+                                "name": "streaming_type_curr",
+                                "type": "string",
+                                "description": "Type of user activity state the session is currently in (before a EVENT record).",
+                                "example_values": ["live", "VoD"]
+                            },
+                            {
+                                "name": "user_activity_mh_sec",
+                                "type": "float32",
+                                "description": "Time spent in main hub state within a record period."
+                            },
+                            {
+                                "name": "user_activity_hs_sec",
+                                "type": "float32",
+                                "description": "Time spent in home space state within a record period."
+                            },
+                            {
+                                "name": "user_activity_sue_sec",
+                                "type": "float32",
+                                "description": "Time spent in separate user-created event state within a record period."
+                            },
+                            {
+                                "name": "user_activity_at_sec",
+                                "type": "float32",
+                                "description": "Time spent in asset trading state within a record period."
+                            },
+                            {
+                                "name": "user_activity_spe_sec",
+                                "type": "float32",
+                                "description": "Time spent in separate provider-created event state within a record period."
+                            },
+                            {
+                                "name": "user_activity_cc_sec",
+                                "type": "float32",
+                                "description": "Time spent in content creation state within a record period."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "app_type": "social_networking",
+        "qoe_metrics": [
+            {
+                "category": "responsiveness",
+                "metrics": [
+                    {
+                        "name": "page_load_time",
+                        "indicators": [
+                            {
+                                "name": "page_load_time_avg_sec",
+                                "type": "float32",
+                                "description": "Average time needed to refreseh or load a new page (e.g., post)."
+                            },
+                            {
+                                "name": "page_load_time_max_sec",
+                                "type": "float32",
+                                "description": "Maximum time needed to refreseh or load a new page (e.g., post)."
+                            },
+                            {
+                                "name": "page_load_time_sum_sec",
+                                "type": "float32",
+                                "description": "Total time needed to refreseh or load a new page (e.g., post)."
+                            }
+                        ]
+                    },
+                    {
+                        "name": "search_delay",
+                        "indicators": [
+                            {
+                                "name": "search_delay_avg_sec",
+                                "type": "float32",
+                                "description": "Average time needed to return search results."
+                            },
+                            {
+                                "name": "search_delay_max_sec",
+                                "type": "float32",
+                                "description": "Maximum time needed to return search results."
+                            },
+                            {
+                                "name": "search_delay_sum_sec",
+                                "type": "float32",
+                                "description": "Total time needed to return search results."
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "category": "smoothness",
+                "metrics": [
+                    {
+                        "name": "disconnection",
+                        "indicators": [
+                            {
+                                "name": "disconnection_count",
+                                "type": "unsigned16",
+                                "description": "Number of times that a network disconnection occured within the record period."
+                            }
+                        ]
+                    },
+                    {
+                        "name": "app_crash",
+                        "indicators": [
+                            {
+                                "name": "app_crash_count",
+                                "type": "unsigned16",
+                                "description": "Number of times that the app crashed within the record period."
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "category": "application_state",
+                "metrics": [
+                    {
+                        "name": "user_activity_state",
+                        "indicators": [
+                            {
+                                "name": "user_activity_dominant",
+                                "type": "string",
+                                "description": "User activity state spanning the longest duration over the record period.",
+                                "example_values": ["load", "view", "search"]
+                            },
+                            {
+                                "name": "user_activity_state_load_sec",
+                                "type": "float32",
+                                "description": "Time spent during the record period loading page contents."
+                            },
+                            {
+                                "name": "user_activity_state_view_sec",
+                                "type": "float32",
+                                "description": "Time spent during the record period viewing loaded contents."
+                            },
+                            {
+                                "name": "user_activity_state_search_sec",
+                                "type": "float32",
+                                "description": "Time spent during the record period searching for results."
+                            },
+                            {
+                                "name": "user_activity_state_prev",
+                                "type": "string",
+                                "description": "Previous user activity state (before a EVENT record).",
+                                "example_values": ["load", "view", "search"]
+                            },
+                            {
+                                "name": "user_activity_state_curr",
+                                "type": "string",
+                                "description": "Current user activity state (before a EVENT record).",
+                                "example_values": ["load", "view", "search"]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

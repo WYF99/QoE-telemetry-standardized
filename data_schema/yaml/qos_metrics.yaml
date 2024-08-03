@@ -1,0 +1,202 @@
+---
+- category: volumetric
+  description: Volumetric/usage metrics of unrelated to performance.
+  metrics:
+  - name: duration
+    fields:
+    - name: duration_sec
+      type: float32
+      description: The duration in seconds covered by this record (e.g., for END this
+        is the session length, for PERIOD this is the report interval).
+      example_values:
+      - 20
+      - 180.335
+  - name: volume
+    fields:
+    - name: byte_count_up_bytes
+      type: unsigned64
+      description: One-way byte volume from client to server summed over the period
+        covered by the record.
+      example_values:
+      - 12000000
+    - name: byte_count_down_bytes
+      type: unsigned64
+      description: One-way byte volume from server to client summed over the period
+        covered by the record.
+      example_values:
+      - 4000000000
+    - name: byte_count_total_bytes
+      type: unsigned64
+      description: Two-way byte volume between client and server summed over the period
+        covered by the record.
+      example_values:
+      - 4012000000
+    - name: packet_count_up_packets
+      type: unsigned64
+      description: Number of packets sent from client to server summed over the period
+        covered by the record.
+      example_values:
+      - 16000
+    - name: packet_count_down_packets
+      type: unsigned64
+      description: Number of packets sent from server to client summed over the period
+        covered by the record.
+      example_values:
+      - 200000
+    - name: packet_count_total_packets
+      type: unsigned64
+      description: Number of packets sent between client and server summed over the
+        period covered by the record.
+      example_values:
+      - 36000
+- category: performance
+  description: Quality of Service (QoS) metrics.
+  metrics:
+  - name: throughput
+    fields:
+    - name: throughput_up_avg_bps
+      type: float32
+      description: The average one-way throughput from client to server in the timeframe
+        covered by this record, measured in bps.
+      example_values:
+      - 0.52
+      - 4.35
+    - name: throughput_down_avg_bps
+      type: float32
+      description: The average one-way throughput from server to client in the timeframe
+        covered by this record, measured in bps.
+      example_values:
+      - 40
+      - 100.8
+    - name: throughput_total_avg_bps
+      type: float32
+      description: The average overall throughput between client and server in the
+        timeframe covered by this record, measured in bps.
+      example_values:
+      - 40.52
+      - 105.15
+    - name: throughput_up_min_bps
+      type: float32
+      description: Minimum one-way throughput from client to server measured over
+        the record period (exact measuremend interval determined by the implementation).
+    - name: throughput_down_min_bps
+      type: float32
+      description: Minimum one-way throughput from server to client measured over
+        the record period (exact measuremend interval determined by the implementation).
+    - name: throughput_total_min_bps
+      type: float32
+      description: Minimum two-way throughput between client and server measured over
+        the record period (exact measuremend interval determined by the implementation).
+    - name: throughput_up_max_bps
+      type: float32
+      description: Maximum one-way throughput from client to server measured over
+        the record period (exact measuremend interval determined by the implementation).
+    - name: throughput_down_max_bps
+      type: float32
+      description: Maximum one-way throughput from server to client measured over
+        the record period (exact measuremend interval determined by the implementation).
+    - name: throughput_total_max_bps
+      type: float32
+      description: Maximum two-way throughput between client and server measured over
+        the record period (exact measuremend interval determined by the implementation).
+  - name: packet_rate
+    fields:
+    - name: packet_rate_up_avg_pps
+      type: float32
+      description: The average one-way packet rate from client to server in the timeframe
+        covered by this record, measured in packets per second.
+      example_values:
+      - 0.52
+      - 4.35
+    - name: packet_rate_down_avg_pps
+      type: float32
+      description: The average one-way packet rate from server to client in the timeframe
+        covered by this record, measured in packets per second.
+      example_values:
+      - 40
+      - 100.8
+    - name: packet_rate_total_avg_pps
+      type: float32
+      description: The average overall packet rate between client and server in the
+        timeframe covered by this record, measured in packets per second.
+      example_values:
+      - 40.52
+      - 105.15
+    - name: packet_rate_up_min_pps
+      type: float32
+      description: Minimum one-way packet rate from client to server measured over
+        the record period (exact measuremend interval determined by the implementation).
+    - name: packet_rate_down_min_pps
+      type: float32
+      description: Minimum one-way packet rate from server to client measured over
+        the record period (exact measuremend interval determined by the implementation).
+    - name: packet_rate_total_min_pps
+      type: float32
+      description: Minimum two-way packet rate between client and server measured
+        over the record period (exact measuremend interval determined by the implementation).
+  - name: latency
+    fields:
+    - name: rtt_internal_avg_ms
+      type: float32
+      description: Average round-trip time between measurement point (e.g., router)
+        and the client over the record period.
+    - name: rtt_external_avg_ms
+      type: float32
+      description: Average round-trip time between measurement point (e.g., router)
+        and the server over the record period.
+    - name: rtt_total_avg_ms
+      type: float32
+      description: Average end-to-end round-trip time between the client and server
+        over the record period.
+    - name: rtt_internal_max_ms
+      type: float32
+      description: Maximum round-trip time between measurement point (e.g., router)
+        and the client over the record period.
+    - name: rtt_external_max_ms
+      type: float32
+      description: Maximum round-trip time between measurement point (e.g., router)
+        and the server over the record period.
+    - name: rtt_total_max_ms
+      type: float32
+      description: Maximum end-to-end round-trip time between the client and server
+        over the record period.
+  - name: jitter
+    fields:
+    - name: jitter_internal_avg_ms
+      type: float32
+      description: Average jitter between measurement point (e.g., router) and the
+        client over the record period.
+    - name: jitter_external_avg_ms
+      type: float32
+      description: Average jitter between measurement point (e.g., router) and the
+        server over the record period.
+    - name: jitter_total_avg_ms
+      type: float32
+      description: Average end-to-end jitter between the client and server over the
+        record period.
+    - name: jitter_internal_max_ms
+      type: float32
+      description: Maximum jitter between measurement point (e.g., router) and the
+        client over the record period.
+    - name: jitter_external_max_ms
+      type: float32
+      description: Maximum jitter between measurement point (e.g., router) and the
+        server over the record period.
+    - name: jitter_total_max_ms
+      type: float32
+      description: Maximum end-to-end jitter between the client and server over the
+        record period.
+  - name: loss
+    fields:
+    - name: loss_internal_ms
+      type: float32
+      description: Packet loss between measurement point and client calculated over
+        the record period.
+    - name: loss_external_ms
+      type: float32
+      description: Packet loss between measurement point and server calculated over
+        the record period.
+    - name: loss_total_ms
+      type: float32
+      description: Packet loss between client and server calculated over the record
+        period.
